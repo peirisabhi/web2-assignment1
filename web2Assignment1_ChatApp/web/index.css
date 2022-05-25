@@ -1,0 +1,9 @@
+.relocate-section{
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top-right;
+    min-height: 450px;
+    position: relative;
+    z-index: 1;
+}

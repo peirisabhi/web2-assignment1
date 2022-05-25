@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 20, 2021 12:22:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Msg" table="msg" catalog="web2_assignment1_db" optimistic-lock="version">
+        <id name="msgId" type="java.lang.Integer">
+            <column name="msg_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userByReceiverId" class="entity.User" fetch="select">
+            <column name="receiver_id" />
+        </many-to-one>
+        <many-to-one name="userBySenderId" class="entity.User" fetch="select">
+            <column name="sender_id" />
+        </many-to-one>
+        <property name="msg" type="string">
+            <column name="msg" />
+        </property>
+        <property name="dateTime" type="timestamp">
+            <column name="date_time" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

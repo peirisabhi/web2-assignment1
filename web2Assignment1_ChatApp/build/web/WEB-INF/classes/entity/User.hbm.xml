@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 20, 2021 12:22:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.User" table="user" catalog="web2_assignment1_db" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="fname" type="string">
+            <column name="fname" />
+        </property>
+        <property name="lname" type="string">
+            <column name="lname" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="500" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="activeStatus" type="java.lang.Byte">
+            <column name="active_status" />
+        </property>
+        <property name="onlineStatus" type="java.lang.Byte">
+            <column name="online_status" />
+        </property>
+        <set name="msgsForReceiverId" table="msg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="receiver_id" />
+            </key>
+            <one-to-many class="entity.Msg" />
+        </set>
+        <set name="msgsForSenderId" table="msg" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sender_id" />
+            </key>
+            <one-to-many class="entity.Msg" />
+        </set>
+    </class>
+</hibernate-mapping>
